@@ -1,0 +1,18 @@
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100Vh;
+    width: 100vw;
+    background-color: darkgray;
+}
+button{
+    border-color: white;
+    cursor: pointer;
+    margin: 50px;
+    background-color: rgba(0, 0, 0, 0.255);
+    width: 200px;
+    color: white;
+    border-radius: 20px;
+}
