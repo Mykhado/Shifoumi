@@ -7,12 +7,27 @@ body{
     width: 100vw;
     background-color: darkgray;
 }
+h1{
+    background-color: rgba(105, 212, 205, 0.559);
+    border: solid 2mm black;
+    padding: 50px;
+    border-radius: 20px;
+}
 button{
-    border-color: white;
+    border:solid 2mm rgb(105, 212, 205);
+    color: rgb(105, 212, 205);
+    font-size: 2em;
     cursor: pointer;
     margin: 50px;
-    background-color: rgba(0, 0, 0, 0.255);
-    width: 200px;
-    color: white;
+    background-color: rgb(0, 0, 0);
+    width: 500px;
+    height: 100px;
     border-radius: 20px;
+}
+button:hover{
+    border:solid 2mm rgb(0, 0, 0);
+    background-color: rgba(105, 212, 205, 0.559);
+    color: black;
+    transition: ease-in-out 0.5s;
+
 }
