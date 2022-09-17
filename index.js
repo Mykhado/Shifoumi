@@ -1,37 +1,35 @@
-// const F = 1;
-// const P = 2;
-// const C = 3;
-// pierre = 1 feuille=2 ciseaux=3
+// F = 1;
+// P = 2;
+// C = 3;
 const pierre = [{ P: "egalité" }, { F: "défaite" }, { C: "victoire" }];
 const feuille = [{ P: "victoire" }, { F: "égalité" }, { C: "défaite" }];
 const ciseaux = [{ P: "défaite" }, { F: "victoire" }, { C: "égalité" }];
 
 // let objet = [pierre, feuille, ciseaux];
 
-// console.log(objet);
 
 function choixUser() {
-  let user = prompt("Saisir: pierre, feuille ou ciseaux");
+  const user = prompt("Saisir: pierre, feuille ou ciseaux");
   return user;
 }
-let choiceUser = choixUser();
+let choiceUser ;
+
 
 function choixPc(max) {
-  return Math.floor(Math.random() * max);
-  // if (Math.floor(Math.random() * max) === 0) {
-  //     random = feuille;
-  // } else if (Math.floor(Math.random() * max) === 1) {
-  //     random = pierre;
-  // } else if (Math.floor(Math.random() * max) === 2) {
-  //     random = ciseaux;
-  // }
-  // console.log(random);
-  // return random
+  let result= Math.floor(Math.random() * max);
+  if ( result=== 0) {
+    return "Skynet a choisi pierre";
+  } else if (result === 1) {
+    return "Skynet a choisi feuille";
+  } else {
+    return "Skynet a choisi ciseaux";
+  }
 }
-let PC = choixPc(3);
-// console.log(PC);
+let PC;
+
 
 // function convertPcChoice() {
+
 //   if (PC === 0) {
 //     return "Skynet a choisi pierre";
 //   } else if (PC === 1) {
@@ -40,65 +38,108 @@ let PC = choixPc(3);
 //     return "Skynet a choisi ciseaux";
 //   }
 // }
-// let choicePC = convertPcChoice();
-// console.log(choicePC);
+// let choicePC ;
+
 
 function randomFeuille() {
-  if (choixPc(3) === 0) {
+  
+  if (PC === "Skynet a choisi pierre") {
     return feuille[0].P;
-  } else if (choixPc(3) === 1) {
+  } else if (PC=== "Skynet a choisi feuille") {
     return feuille[1].F;
-  } else if (choixPc(3) === 2) {
+  } else if (PC=== "Skynet a choisi ciseaux") {
     return feuille[2].C;
   }
 }
-let feuilleR = randomFeuille();
+let feuilleR;
+
 // console.log(feuilleR);
 
 function randomPierre() {
-  if (choixPc(3) === 0) {
+  
+  if (PC=== "Skynet a choisi pierre") {
     return pierre[0].P;
-  } else if (choixPc(3) === 1) {
+  } else if (PC=== "Skynet a choisi feuille") {
     return pierre[1].F;
-  } else if (choixPc(3) === 2) {
+  } else if (PC === "Skynet a choisi ciseaux") {
     return pierre[2].C;
   }
 }
-let pierreR = randomPierre();
+let pierreR ;
+
 // console.log(pierreR);
 
 function randomCiseaux() {
-  if (choixPc(3) === 0) {
-    return pierre[0].P;
-  } else if (choixPc(3) === 1) {
-    return pierre[1].F;
-  } else if (choixPc(3) === 2) {
-    return pierre[2].C;
+  
+  if (PC=== "Skynet a choisi pierre") {
+    return ciseaux[0].P;
+  } else if (PC === "Skynet a choisi feuille") {
+    return ciseaux[1].F;
+  } else if (PC=== "Skynet a choisi ciseaux") {
+    return ciseaux[2].C;
   }
 }
-let ciseauxR = randomCiseaux();
-// console.log(ciseauxR);
+let ciseauxR;
 
-function duel() {
-  if (choiceUser === "pierre") {
-    return pierreR;
-  } else if (choiceUser === "feuille") {
-    return feuilleR;
-  } else if (choiceUser === "ciseaux") {
-    return ciseauxR;
-  } else {
-    return "Entrez un choix parmis ceux proposé precedement ";
-  }
-}
-let resultat = duel();
+// function duel() {
+
+//   if (choiceUser === "pierre") {
+//     return pierreR;
+//   } else if (choiceUser === "feuille") {
+//     return feuilleR;
+//   } else if (choiceUser === "ciseaux") {
+//     return ciseauxR;
+//   } else {
+//     return "Entrez un choix parmis ceux proposé précedement ";
+//   }
+// }
+// let resultat;
+
 
 let userbtn = document.getElementById("utilisateur");
 userbtn.addEventListener("click", (event) => {
-  // choiceUser = choixUser();
-  choixUser();
-  console.log(choiceUser);
-  choixPc();
+  
+  // console.log(choiceUser);
+  // PC=choixPc(3);
+  // console.log(PC);
+  // choicePC = convertPcChoice();
   // console.log(choicePC);
-  duel();
-  console.log(resultat);
+  choiceUser = choixUser();
+  switch (choiceUser) {
+    case "pierre":
+      // Instructions à exécuter lorsque le résultat
+      // de l'expression correspond à valeur1
+      console.log(choiceUser)
+      PC=choixPc(3);
+      console.log(PC);
+      pierreR=randomPierre();
+      console.log(pierreR);
+      break;
+    case "ciseaux":
+      // Instructions à exécuter lorsque le résultat
+      // de l'expression correspond à valeur2
+      console.log(choiceUser)
+      PC=choixPc(3);
+      console.log(PC);
+      ciseauxR = randomCiseaux();
+      console.log(ciseauxR);
+      break;
+    
+    case "feuille":
+      // Instructions à exécuter lorsque le résultat
+      // de l'expression à valeurN
+      console.log(choiceUser)
+      PC=choixPc(3);
+      console.log(PC);
+      feuilleR = randomFeuille();
+      console.log(feuilleR);
+      break;
+    default:
+      // Instructions à exécuter lorsqu'aucune des valeurs
+      // ne correspond
+      "Entrez un choix parmis ceux proposé précedement ";
+      break;
+  }
+  // resultat=duel(); 
+  // console.log(resultat);
 });
