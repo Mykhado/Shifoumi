@@ -1,11 +1,9 @@
-// F = 1;
-// P = 2;
-// C = 3;
+
 const pierre = [{ P: "egalité" }, { F: "défaite" }, { C: "victoire" }];
 const feuille = [{ P: "victoire" }, { F: "égalité" }, { C: "défaite" }];
 const ciseaux = [{ P: "défaite" }, { F: "victoire" }, { C: "égalité" }];
 
-// let objet = [pierre, feuille, ciseaux];
+
 
 
 function choixUser() {
@@ -27,6 +25,7 @@ function choixPc(max) {
 }
 let PC;
 
+// convertion du math floor/math random en chaine de caractere exploitable pour l' information utilisateur -(return d'une chaine de caractère plus simple directement dans la fonction choixPc ())
 
 // function convertPcChoice() {
 
@@ -81,6 +80,8 @@ function randomCiseaux() {
 }
 let ciseauxR;
 
+// fonction duel non concluant (mais exploitable en l'améliorant), essai du switch plus fonctionnel:
+
 // function duel() {
 
 //   if (choiceUser === "pierre") {
@@ -95,15 +96,10 @@ let ciseauxR;
 // }
 // let resultat;
 
-
+// mise en route du "SHIFOUMI" avec l'utilisation des différentes fonction par rapport au choix utilisateur dés le "click" sur le button 
 let userbtn = document.getElementById("utilisateur");
 userbtn.addEventListener("click", (event) => {
   
-  // console.log(choiceUser);
-  // PC=choixPc(3);
-  // console.log(PC);
-  // choicePC = convertPcChoice();
-  // console.log(choicePC);
   choiceUser = choixUser();
   switch (choiceUser) {
     case "pierre":
@@ -140,6 +136,9 @@ userbtn.addEventListener("click", (event) => {
       "Entrez un choix parmis ceux proposé précedement ";
       break;
   }
-  // resultat=duel(); 
-  // console.log(resultat);
+
+  let choiceSkynet = document.getElementById("skynet");
+  choiceSkynet.innerHTML= "<h2>"+PC+"</h2>";
 });
+
+
