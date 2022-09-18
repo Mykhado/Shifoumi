@@ -4,6 +4,20 @@ const feuille = [{ P: "victoire" }, { F: "égalité" }, { C: "défaite" }];
 const ciseaux = [{ P: "défaite" }, { F: "victoire" }, { C: "égalité" }];
 let scorePlayer=0;
 let scoreSkynet=0;
+let choiceUser ;
+let PC;
+let feuilleR;
+let pierreR ;
+let ciseauxR;
+let resultat;
+let userbtn = document.getElementById("utilisateur");
+let affPlayer = document.getElementById("player");
+let choiceSkynet = document.getElementById("skynet");
+let affResult = document.getElementById("result");
+let scoreP = document.getElementById("player-score");
+let scoreS= document.getElementById("skynet-score");
+let affCounter= document.getElementById("counter");
+
 
 
 
@@ -11,8 +25,6 @@ function choixUser() {
   const user = prompt("Saisir: pierre, feuille ou ciseaux");
   return user;
 }
-let choiceUser ;
-
 
 function choixPc(max) {
   let result= Math.floor(Math.random() * max);
@@ -24,9 +36,9 @@ function choixPc(max) {
     return "Skynet a choisi ciseaux";
   }
 }
-let PC;
 
-// convertion du math floor/math random en chaine de caractere exploitable pour l' information utilisateur -(return d'une chaine de caractère plus simple directement dans la fonction choixPc ())
+
+// convertion du math floor/math random en chaine de caractere exploitable pour l' information utilisateur (return d'une chaine de caractère plus simple directement dans la fonction choixPc ())
 
 // function convertPcChoice() {
 
@@ -51,7 +63,7 @@ function randomFeuille() {
     return feuille[2].C;
   }
 }
-let feuilleR;
+
 
 // console.log(feuilleR);
 
@@ -65,7 +77,7 @@ function randomPierre() {
     return pierre[2].C;
   }
 }
-let pierreR ;
+
 
 // console.log(pierreR);
 
@@ -79,7 +91,7 @@ function randomCiseaux() {
     return ciseaux[2].C;
   }
 }
-let ciseauxR;
+
 
 function affResultat(){
   
@@ -91,10 +103,7 @@ function affResultat(){
   }else{
     return ciseauxR;
   }
-
-
 }
-let resultat;
 
 // fonction duel non concluant (mais exploitable en l'améliorant), essai du switch plus fonctionnel:
 
@@ -113,7 +122,7 @@ let resultat;
 // let resultat;
 
 // mise en route du "SHIFOUMI" avec l'utilisation des différentes fonction par rapport au choix utilisateur dés le "click" sur le button 
-let userbtn = document.getElementById("utilisateur");
+
 userbtn.addEventListener("click", (event) => {
   
   choiceUser = choixUser();
@@ -153,16 +162,16 @@ userbtn.addEventListener("click", (event) => {
       break;
   }
 
-    resultat = affResultat();
-    console.log(resultat);
-  let affPlayer = document.getElementById("player");
+  resultat = affResultat();
+  console.log(resultat);
+  
   if(choiceUser === "Entrez un choix parmis ceux proposé précedement "){
     affPlayer.innerHTML="<h2>"+choiceUser+" !</h2>";
   }else{
     affPlayer.innerHTML="<h2>Vous avez choisi "+choiceUser+" !</h2>";
   }
 
-  let choiceSkynet = document.getElementById("skynet");
+  
   if(choiceUser!= "Entrez un choix parmis ceux proposé précedement "){
     choiceSkynet.style.display= "block";
     choiceSkynet.innerHTML= "<h2>"+PC+" !</h2>";
@@ -170,7 +179,7 @@ userbtn.addEventListener("click", (event) => {
     choiceSkynet.style.display= "none";;
   }
   
-  let affResult = document.getElementById("result");
+  
   if(choiceUser!= "Entrez un choix parmis ceux proposé précedement "){
     affResult.style.display= "block";
     affResult.innerHTML="<h2>C'est une "+resultat+" !</h2>";
@@ -178,22 +187,20 @@ userbtn.addEventListener("click", (event) => {
     affResult.style.display= "none";
   }
 
-
-  let scoreP = document.getElementById("player-score");
   if( resultat == "victoire"){
     scorePlayer ++;
     scoreP.innerHTML= ""+scorePlayer.toString()+"";
   }
   console.log(scorePlayer);
 
-  let scoreS= document.getElementById("skynet-score");
+  
   if( resultat == "défaite"){
     scoreSkynet ++;
     scoreS.innerHTML=""+scoreSkynet.toString()+"";
   }
   console.log(scoreSkynet);
   
-  let affCounter= document.getElementById("counter");
+
   if( scorePlayer > scoreSkynet){
     affCounter.style.color="green";
   }else if(scorePlayer< scoreSkynet){
