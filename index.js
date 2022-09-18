@@ -173,18 +173,18 @@ userbtn.addEventListener("click", (event) => {
 
   
   if(choiceUser!= "Entrez un choix parmis ceux proposé précedement "){
-    choiceSkynet.style.display= "block";
+    choiceSkynet.style.visibility= "visible";
     choiceSkynet.innerHTML= "<h2>"+PC+" !</h2>";
   }else{
-    choiceSkynet.style.display= "none";;
+    choiceSkynet.style.visibility= "hidden";;
   }
   
   
   if(choiceUser!= "Entrez un choix parmis ceux proposé précedement "){
-    affResult.style.display= "block";
+    affResult.style.visibility= "visible";
     affResult.innerHTML="<h2>C'est une "+resultat+" !</h2>";
   }else{
-    affResult.style.display= "none";
+    affResult.style.visibility= "hidden";
   }
 
   if( resultat == "victoire"){
