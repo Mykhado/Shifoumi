@@ -1,8 +1,9 @@
 
-const pierre = [{ P: "egalité" }, { F: "défaite" }, { C: "victoire" }];
+const pierre = [{ P: "égalité" }, { F: "défaite" }, { C: "victoire" }];
 const feuille = [{ P: "victoire" }, { F: "égalité" }, { C: "défaite" }];
 const ciseaux = [{ P: "défaite" }, { F: "victoire" }, { C: "égalité" }];
-
+let scorePlayer=0;
+let scoreSkynet=0;
 
 
 
@@ -80,6 +81,21 @@ function randomCiseaux() {
 }
 let ciseauxR;
 
+function affResultat(){
+  
+  if(choiceUser=== "pierre"){
+    return pierreR;
+
+  }else if(choiceUser==="feuille"){
+    return feuilleR;
+  }else{
+    return ciseauxR;
+  }
+
+
+}
+let resultat;
+
 // fonction duel non concluant (mais exploitable en l'améliorant), essai du switch plus fonctionnel:
 
 // function duel() {
@@ -133,12 +149,60 @@ userbtn.addEventListener("click", (event) => {
     default:
       // Instructions à exécuter lorsqu'aucune des valeurs
       // ne correspond
-      "Entrez un choix parmis ceux proposé précedement ";
+     choiceUser = "Entrez un choix parmis ceux proposé précedement ";
       break;
   }
 
+    resultat = affResultat();
+    console.log(resultat);
+  let affPlayer = document.getElementById("player");
+  if(choiceUser === "Entrez un choix parmis ceux proposé précedement "){
+    affPlayer.innerHTML="<h2>"+choiceUser+" !</h2>";
+  }else{
+    affPlayer.innerHTML="<h2>Vous avez choisi "+choiceUser+" !</h2>";
+  }
+
   let choiceSkynet = document.getElementById("skynet");
-  choiceSkynet.innerHTML= "<h2>"+PC+"</h2>";
+  if(choiceUser!= "Entrez un choix parmis ceux proposé précedement "){
+    choiceSkynet.style.display= "block";
+    choiceSkynet.innerHTML= "<h2>"+PC+" !</h2>";
+  }else{
+    choiceSkynet.style.display= "none";;
+  }
+  
+  let affResult = document.getElementById("result");
+  if(choiceUser!= "Entrez un choix parmis ceux proposé précedement "){
+    affResult.style.display= "block";
+    affResult.innerHTML="<h2>C'est une "+resultat+" !</h2>";
+  }else{
+    affResult.style.display= "none";
+  }
+
+
+  let scoreP = document.getElementById("player-score");
+  if( resultat == "victoire"){
+    scorePlayer ++;
+    scoreP.innerHTML= ""+scorePlayer.toString()+"";
+  }
+  console.log(scorePlayer);
+
+  let scoreS= document.getElementById("skynet-score");
+  if( resultat == "défaite"){
+    scoreSkynet ++;
+    scoreS.innerHTML=""+scoreSkynet.toString()+"";
+  }
+  console.log(scoreSkynet);
+  
+  let affCounter= document.getElementById("counter");
+  if( scorePlayer > scoreSkynet){
+    affCounter.style.color="green";
+  }else if(scorePlayer< scoreSkynet){
+    affCounter.style.color="red";
+  }else{
+    affCounter.style.color="black";
+  }
+
+
 });
 
 
